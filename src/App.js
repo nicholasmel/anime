@@ -1,23 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
+import Anime from './components/Anime';
+import Footer from './components/Footer';
+import Header from './components/Header';
+import HeroSection from './components/HeroSection';
+import PageSection from './components/PageSection';
+import TopAnime from './components/TopAnime';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App bg-slate-900">
+      <HeroSection />
+      <Header title='Top Animes' />
+      <TopAnime />
+      <PageSection title={'惡鬼滅殺'} quote={"Set your heart ablaze."} />
+      <Header title='Search Anime' />
+      <Anime />
+      <Footer />
     </div>
   );
 }
