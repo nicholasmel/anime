@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/anime/static/css/main.a712a3c8.css",
+    "main.js": "/anime/static/js/main.fc761d03.js",
+    "static/media/Rengoku.png": "/anime/static/media/Rengoku.c91205f27526ce26f17e.png",
+    "index.html": "/anime/index.html",
+    "main.a712a3c8.css.map": "/anime/static/css/main.a712a3c8.css.map",
+    "main.fc761d03.js.map": "/anime/static/js/main.fc761d03.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a712a3c8.css",
+    "static/js/main.fc761d03.js"
+  ]
+}
