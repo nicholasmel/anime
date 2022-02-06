@@ -4,13 +4,6 @@ import { Popover, Transition } from '@headlessui/react'
 import { XIcon } from '@heroicons/react/outline'
 import Slide from './Slide';
 
-const navigation = [
-    { name: '', href: '#' },
-    { name: '', href: '#' },
-    { name: '', href: '#' },
-    { name: '', href: '#' },
-]
-
 function HeroSection() {
     const [open, setOpen] = useState(true);
 
@@ -33,29 +26,15 @@ function HeroSection() {
                             <nav className="relative flex items-center justify-between sm:h-10 lg:justify-start" aria-label="Global">
                                 <div className="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
                                     <div className="flex items-center justify-between w-full md:w-auto">
-                                        <a href="#">
+                                        <div>
                                             <span className="sr-only"></span>
                                             <img
                                                 className="h-12 w-auto sm:h-12"
                                                 src="https://img.icons8.com/material-rounded/384/0ea4e9/naruto-sign.png"
+                                                alt=""
                                             />
-                                        </a>
-                                        {/**
-                                        <div className="-mr-2 flex items-center md:hidden">
-                                            <Popover.Button className="bg-slate-50 rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
-                                                <span className="sr-only">Open main menu</span>
-                                                <MenuIcon className="h-6 w-6" aria-hidden="true" />
-                                            </Popover.Button>
                                         </div>
-                                         */}
                                     </div>
-                                </div>
-                                <div className="hidden md:block md:ml-10 md:pr-4 md:space-x-8">
-                                    {navigation.map((item) => (
-                                        <a key={item.name} href={item.href} className="font-medium text-slate-100 hover:text-sky-400">
-                                            {item.name}
-                                        </a>
-                                    ))}
                                 </div>
                             </nav>
                         </div>
@@ -88,17 +67,6 @@ function HeroSection() {
                                                 <XIcon className="h-6 w-6" aria-hidden="true" />
                                             </Popover.Button>
                                         </div>
-                                    </div>
-                                    <div className="px-2 pt-2 pb-3 space-y-1">
-                                        {navigation.map((item) => (
-                                            <a
-                                                key={item.name}
-                                                href={item.href}
-                                                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
-                                            >
-                                                {item.name}
-                                            </a>
-                                        ))}
                                     </div>
                                 </div>
                             </Popover.Panel>

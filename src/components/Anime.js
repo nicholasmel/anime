@@ -6,10 +6,6 @@ function Anime() {
     const [characterList, setCharacterList] = useState([]);
     const [search, setSearch] = useState(['Demon Slayer']);
 
-    const HandleSearch = e => {
-        getCharacter(search);
-    }
-
     const getCharacter = async () => {
         const temp = await fetch(`https://api.jikan.moe/v4/anime?q=${search}&limit=5`)
             .then(res => res.json());
@@ -20,6 +16,10 @@ function Anime() {
     useEffect(() => {
         getCharacter();
     }, []);
+
+    const HandleSearch = e => {
+        getCharacter(search);
+    }
 
     return (
         <div>

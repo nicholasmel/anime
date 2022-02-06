@@ -1,20 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Popover } from '@headlessui/react';
-import { XIcon } from '@heroicons/react/outline';
-import Slide from './Slide';
-import Modal from './Modal';
 
 function TopAnime() {
     const [topAnime, SetTopAnime] = useState([]);
-    const [open, setOpen] = useState(false);
-
-    const handleOnClose = () => setOpen(false);
 
     const GetTopAnime = async () => {
         const temp = await fetch('https://api.jikan.moe/v4/top/anime')
             .then(res => res.json());
 
-        SetTopAnime(temp.data.slice(0, 7));
+        SetTopAnime(temp.data.slice(0, 8));
     }
 
     useEffect(() => {
@@ -73,7 +66,7 @@ function TopAnime() {
                                             </div>
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap">
-                                            <div className="text-md text-slate-50">{anime.title}</div>
+                                            <div className="text-md text-slate-50">{anime.title_english === null ? anime.title : anime.title_english}</div>
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap">
                                             <div className="text-sm text-slate-50">{anime.rating}</div>
