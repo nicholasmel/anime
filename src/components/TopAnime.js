@@ -53,10 +53,10 @@ function TopAnime() {
                                     <tr key={anime.title} >
                                         <td className="pl-10 py-4 whitespace-nowrap">
                                             <div className="flex items-center">
-                                                <div className="ml-6 flex-shrink-0 h-20 w-20">
+                                                <div className="ml-6 flex-shrink-0 h-30 w-20">
                                                     <img
-                                                        className="h-20 w-20 shadow-2xl rounded-md"
-                                                        src={anime.images.webp.image_url}
+                                                        className="h-auto w-auto shadow-2xl rounded-md object-contain"
+                                                        src={anime.images.webp.large_image_url}
                                                         alt=""
                                                     />
                                                 </div>
