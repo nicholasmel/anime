@@ -4,7 +4,7 @@ import Search from './Search';
 
 function Anime() {
     const [characterList, setCharacterList] = useState([]);
-    const [search, setSearch] = useState(['Demon Slayer']);
+    const [search, setSearch] = useState(['Naruto']);
 
     const getCharacter = async () => {
         const temp = await fetch(`https://api.jikan.moe/v4/anime?q=${search}&limit=5`)
