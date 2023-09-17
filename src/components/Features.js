@@ -21,14 +21,14 @@ export default function Features({ title, japanese, synopsis, image, rank, year,
                         width="300"
                     />
                 </div>
-                <div>
-                    <h2 className="text-sm font-extrabold tracking-tight text-white sm:text-sm">{title}</h2>
-                    <p className="mt-4 text-slate-100">{japanese}</p>
-                    <dl className="mt-16 grid grid-cols-4 gap-x-1 gap-y-1 sm:grid-cols-4 sm:gap-y-1 lg:gap-x-1">
+                <div className='mx-4'>
+                    <h2 className="text-base font-extrabold tracking-tight text-white sm:text-sm">{title}</h2>
+                    <p className="text-slate-100 text-xs">{japanese}</p>
+                    <dl className="mt-1 grid grid-cols-4 gap-x-1 gap-y-1 sm:grid-cols-4 sm:gap-y-1 lg:gap-x-1">
                         {features.map((feature) => (
                             <div key={feature.name}>
-                                <dt className="font-medium text-slate-400">{feature.name}</dt>
-                                {feature.description == null ? <dd className="mt-2 text-sm text-slate-200">{feature.name} Not Available</dd> : <dd className="mt-2 text-sm text-slate-200">{feature.description}</dd>}
+                                <dt className="font-medium text-blue-600 mt-2">{feature.name}</dt>
+                                {feature.description == null ? <dd className="mt-2 text-sm text-white">{feature.name} Not Available</dd> : <dd className="mt-2 text-sm text-white">{feature.description}</dd>}
                             </div>
                         ))}
                     </dl>
