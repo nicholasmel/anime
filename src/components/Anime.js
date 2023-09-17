@@ -4,10 +4,10 @@ import Search from './Search';
 
 function Anime() {
     const [characterList, setCharacterList] = useState([]);
-    const [search, setSearch] = useState(['Naruto']);
+    const [search, setSearch] = useState(['One Piece']);
 
     const getCharacter = async () => {
-        const temp = await fetch(`https://api.jikan.moe/v4/anime?q=${search}&limit=5&sfw=true`)
+        const temp = await fetch(`https://api.jikan.moe/v4/anime?q=${search}&limit=3`)
             .then(res => res.json());
 
         setCharacterList(temp.data);
@@ -30,9 +30,15 @@ function Anime() {
                 characterList={characterList}
                 placeHolder={"Search..."}
             />
-            {characterList.map((character) => (
-                <Features key={character.title} title={character.title_english} japanese={character.title_japanese} synopsis={character.synopsis} image={character.images.webp.large_image_url} rank={character.rank} year={character.year} score={character.score} source={character.source} status={character.status} episodes={character.episodes} />
-            ))}
+            <h2 className="text-xl leading-8 font-semibold text-white ml-24 mt-8 mb-2">
+                Top Results
+            </h2>
+            <div className='flex align-middle justify-center'>
+
+                {characterList.map((character) => (
+                    <Features key={character.title} title={character.title_english} japanese={character.title_japanese} synopsis={character.synopsis} image={character.images.webp.large_image_url} rank={character.rank} year={character.year} score={character.score} source={character.source} status={character.status} episodes={character.episodes} />
+                ))}
+            </div>
         </div>
 
     );

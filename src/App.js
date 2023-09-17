@@ -13,7 +13,6 @@ function App() {
       <TopAnime byFilter={'airing'} sectionTitle={"Watch Now!"} />
       <TopAnime byFilter={'bypopularity'} sectionTitle={"Most Popular!"} />
       <PageSection title={'惡鬼滅殺'} quote={"Set your heart ablaze."} />
-      <Header title='Search Anime' />
       <Anime />
       <Footer />
     </div>

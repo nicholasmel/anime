@@ -3,12 +3,14 @@ import { Fragment } from 'react'
 import { Popover, Transition } from '@headlessui/react'
 import { XIcon } from '@heroicons/react/outline'
 import Slide from './Slide';
+import theOnePiece from '../images/onepiece.png';
+import icon from '../images/icons8-naruto-sign-90.png';
 
 function HeroSection() {
     const [open, setOpen] = useState(true);
 
     return (
-        <div className="relative bg-black overflow-hidden">
+        <div className="relative bg-black">
             <div className="max-w-10xl mx-auto">
                 <div className="relative z-10 pb-8 bg-black sm:pb-16 md:pb-20 lg:max-w-2xl xlg:max-w-4xl lg:pb-28 xl:pb-32">
                     <svg
@@ -29,10 +31,11 @@ function HeroSection() {
                                         <div>
                                             <span className="sr-only"></span>
                                             <img
-                                                className="h-12 w-auto sm:h-12"
-                                                src="https://img.icons8.com/material-rounded/384/0ea4e9/naruto-sign.png"
+                                                className="h-12 w-auto mt-8 pl-4"
+                                                src={icon}
                                                 alt=""
                                             />
+                                            <a href="https://icons8.com/icon/yMlC54dRHefl/naruto-sign">Naruto Sign</a> icon by <a href="https://icons8.com">Icons8</a>
                                         </div>
                                     </div>
                                 </div>
@@ -77,20 +80,20 @@ function HeroSection() {
                         <div className="sm:text-center lg:text-left">
                             <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-5xl">
                                 <span className="block xl:inline"></span>{' '}
-                                <span className="block text-sky-400 xl:inline">Anime Database</span>
+                                <span className="block text-white xl:inline">Anime Database</span>
                             </h1>
                             <p className="mt-3 text-base text-slate-400 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-                                Most active online <a className='text-sky-500'>anime + manga</a> community and database
+                                Most active online <a className='text-blue-500'>anime + manga</a> community and database
                             </p>
                             <div className="mt-5 w-40 sm:mt-8 sm:flex sm:justify-center lg:justify-start lg:w-auto">
                                 <div className="rounded-md shadow">
                                     <a
-                                        className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-slate-50 hover:text-white bg-sky-600 hover:bg-sky-500 md:py-4 md:text-lg md:px-10"
+                                        className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-slate-50 hover:text-white bg-blue-800 hover:bg-sky-500 md:py-4 md:text-lg md:px-10"
                                         onClick={() => setOpen(true)}
                                     >
                                         View More
                                     </a>
-                                    <Slide open={open} setOpen={setOpen} title={"Featured"} />
+                                    <Slide open={open} setOpen={setOpen} title={"My Favorites!"} />
                                 </div>
                             </div>
                         </div>
@@ -99,8 +102,8 @@ function HeroSection() {
             </div>
             <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
                 <img
-                    className="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full object-top"
-                    src="https://wallpapercave.com/wp/wp8003758.jpg"
+                    className="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full object-left"
+                    src={theOnePiece}
                     alt=""
                 />
             </div>

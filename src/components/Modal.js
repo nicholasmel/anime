@@ -34,8 +34,8 @@ function Modal({ open, setOpen }) {
                         leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                         leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                     >
-                        <div className="inline-block align-bottom bg-slate-900 rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full mx-10">
-                            <div className="bg-slate-800 bg-opacity-70 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                        <div className="inline-block align-bottom bg-neutral-900 rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full mx-10">
+                            <div className="bg-neutral-900 bg-opacity-70 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                                 <div className="sm:flex sm:items-start">
                                     <div className="mx-40 lg:mx-auto">
                                         <img className="shadow-2xl rounded-sm" src={rengoku} alt="" width="400" />
@@ -53,10 +53,10 @@ function Modal({ open, setOpen }) {
                                     </div>
                                 </div>
                             </div>
-                            <div className="bg-slate-800 bg-opacity-90 px-6 py-3 sm:px-6 sm:flex sm:flex-row-reverse flex flex-row-reverse">
+                            <div className="bg-netural-800 bg-opacity-90 px-6 py-3 sm:px-6 sm:flex sm:flex-row-reverse flex flex-row-reverse">
                                 <button
                                     type="button"
-                                    className="mt-3 w-12 inline-flex justify-center rounded-md border border-sky-900 shadow-sm px-4 py-2 bg-sky-800 text-base font-medium text-slate-200 hover:bg-slate-500 focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-sky-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+                                    className="mt-3 w-12 inline-flex justify-center rounded-sm border border-blue-900 shadow-sm px-4 py-2 bg-blue-800 text-base font-medium text-slate-200 hover:bg-blue-500 focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-blue-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
                                     onClick={() => setOpen(false)}
                                     ref={cancelButtonRef}
                                 >

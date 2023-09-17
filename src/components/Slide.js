@@ -7,7 +7,7 @@ function Slide({ open, setOpen, title }) {
     return (
         <div>
             <Transition show={open} as={Fragment}>
-                <Dialog as="div" className="fixed inset-0 overflow-hidden" onClose={setOpen}>
+                <Dialog as="div" className="fixed inset-0 overflow-hidden  z-20" onClose={setOpen}>
                     <div className="absolute inset-0 overflow-hidden">
                         <Transition.Child
                             as={Fragment}
@@ -51,15 +51,14 @@ function Slide({ open, setOpen, title }) {
                                             </button>
                                         </div>
                                     </Transition.Child>
-                                    <div className="h-full flex flex-col py-6 bg-slate-800 shadow-2xl overflow-y-scroll border-l border-slate-700">
+                                    <div className="h-full flex flex-col py-6 bg-neutral-900 shadow-2xl overflow-y-scroll border-l border-slate-700">
                                         <div className="px-4 sm:px-6">
-                                            <Dialog.Title className="text-lg font-medium text-sky-400">{title}</Dialog.Title>
+                                            <Dialog.Title className="text-lg font-medium text-white">{title}</Dialog.Title>
                                         </div>
                                         <div className="mt-6 relative flex-1 px-4 sm:px-6">
                                             {/* Replace with your content */}
                                             <div className="absolute inset-0 px-4 sm:px-6">
-                                                <div className="text-slate-200 border-2 border-dashed border-sky-500" aria-hidden="true">
-                                                    <h1 className='p-2 text-center font-bold text-slate-200'>Anime</h1>
+                                                <div className="text-slate-200 border-2 border-dashed border-blue-500" aria-hidden="true">
                                                     <div className='m-4 grid grid-cols-2 grid-rows-2 h-32'>
                                                         <img src="https://cdn.myanimelist.net/images/anime/1171/109222l.webp" alt=""
                                                             className='h-32 rounded-md shadow-xl justify-self-center' />

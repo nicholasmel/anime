@@ -137,7 +137,7 @@ function TopAnime({ byFilter, sectionTitle }) {
                                 </a>
                                 <a
                                     //href={anime.link}
-                                    className="h-full w-full aspect-square block absolute top-0 left-0 transition-opacity duration-300 opacity-0 hover:opacity-90 bg-gray-900 z-10"
+                                    className="h-full w-full aspect-square block absolute top-0 left-0 transition-opacity duration-300 opacity-0 hover:opacity-100 bg-neutral-900 z-10"
                                 >
                                     <h3 className="text-white py-6 px-3 mx-auto text-l">
                                         {anime.title_english}
