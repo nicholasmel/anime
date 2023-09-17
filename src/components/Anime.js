@@ -7,7 +7,7 @@ function Anime() {
     const [search, setSearch] = useState(['Naruto']);
 
     const getCharacter = async () => {
-        const temp = await fetch(`https://api.jikan.moe/v4/anime?q=${search}&limit=5`)
+        const temp = await fetch(`https://api.jikan.moe/v4/anime?q=${search}&limit=5&sfw=true`)
             .then(res => res.json());
 
         setCharacterList(temp.data);

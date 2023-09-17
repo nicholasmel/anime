@@ -8,11 +8,11 @@ function HeroSection() {
     const [open, setOpen] = useState(true);
 
     return (
-        <div className="relative bg-gray-900 overflow-hidden">
+        <div className="relative bg-black overflow-hidden">
             <div className="max-w-10xl mx-auto">
-                <div className="relative z-10 pb-8 bg-gray-900 sm:pb-16 md:pb-20 lg:max-w-2xl xlg:max-w-4xl lg:pb-28 xl:pb-32">
+                <div className="relative z-10 pb-8 bg-black sm:pb-16 md:pb-20 lg:max-w-2xl xlg:max-w-4xl lg:pb-28 xl:pb-32">
                     <svg
-                        className="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-gray-900 transform translate-x-1/2"
+                        className="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-blue-900 transform translate-x-1/2"
                         fill="currentColor"
                         viewBox="0 0 100 100"
                         preserveAspectRatio="none"

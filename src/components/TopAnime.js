@@ -1,85 +1,163 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
-function TopAnime() {
+function TopAnime({ byFilter, sectionTitle }) {
     const [topAnime, SetTopAnime] = useState([]);
 
     const GetTopAnime = async () => {
-        const temp = await fetch('https://api.jikan.moe/v4/top/anime')
+        const temp = await fetch(`https://api.jikan.moe/v4/top/anime?filter=${byFilter}`)
             .then(res => res.json());
 
-        SetTopAnime(temp.data.slice(0, 8));
+        SetTopAnime(temp.data.slice(0, 20));
     }
 
     useEffect(() => {
         GetTopAnime();
     }, []);
 
-    return (
-        <div className="flex flex-col overflow-hidden m-10 shadow-2xl">
-            <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                    <div className="overflow-hidden border-b border-slate-900 sm:rounded-lg">
-                        <table className="min-w-full divide-y divide-slate-800 rounded-lg">
-                            <thead className="bg-slate-800 border-t border-slate-600 bg-opacity-60">
-                                <tr>
-                                    <th
-                                        scope="col"
-                                        className="px-6 py-3 text-left text-md font-medium text-slate-50 uppercase tracking-wider"
-                                    >
+    const maxScrollWidth = useRef(0);
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const carousel = useRef(null);
 
-                                    </th>
-                                    <th
-                                        scope="col"
-                                        className="px-6 py-3 text-left text-md font-medium text-sky-500   uppercase tracking-wider"
-                                    >
-                                        Title
-                                    </th>
-                                    <th
-                                        scope="col"
-                                        className="px-6 py-3 text-left text-md font-medium text-sky-500   uppercase tracking-wider"
-                                    >
-                                        Rating
-                                    </th>
-                                    <th
-                                        scope="col"
-                                        className="px-6 py-3 text-left text-md font-medium text-sky-500   uppercase tracking-wider"
-                                    >
-                                        Episodes
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody className="bg-slate-800 bg-opacity-90 divide-y divide-slate-700">
-                                {topAnime.map((anime) => (
-                                    <tr key={anime.title} >
-                                        <td className="pl-10 py-4 whitespace-nowrap">
-                                            <div className="flex items-center">
-                                                <div className="ml-6 flex-shrink-0 h-30 w-20">
-                                                    <img
-                                                        className="h-auto w-auto shadow-2xl rounded-md object-contain"
-                                                        src={anime.images.webp.large_image_url}
-                                                        alt=""
-                                                    />
-                                                </div>
-                                                <div className="ml-0">
-                                                    <div className="text-sm font-medium text-slate-50">{anime.name}</div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td className="px-6 py-4 whitespace-nowrap">
-                                            <div className="text-md text-slate-50">{anime.title_english === null ? anime.title : anime.title_english}</div>
-                                        </td>
-                                        <td className="px-6 py-4 whitespace-nowrap">
-                                            <div className="text-sm text-slate-50">{anime.rating}</div>
-                                        </td>
-                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-50 text-center">{anime.episodes}</td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    </div>
+    const movePrev = () => {
+        if (currentIndex > 0) {
+            setCurrentIndex((prevState) => prevState - 1);
+        }
+    };
+
+    const moveNext = () => {
+        if (
+            carousel.current !== null &&
+            carousel.current.offsetWidth * currentIndex <= maxScrollWidth.current
+        ) {
+            setCurrentIndex((prevState) => prevState + 1);
+        }
+    };
+
+    const isDisabled = (direction) => {
+        if (direction === 'prev') {
+            return currentIndex <= 0;
+        }
+
+        if (direction === 'next' && carousel.current !== null) {
+            return (
+                carousel.current.offsetWidth * currentIndex >= maxScrollWidth.current
+            );
+        }
+
+        return false;
+    };
+
+    useEffect(() => {
+        if (carousel !== null && carousel.current !== null) {
+            carousel.current.scrollLeft = carousel.current.offsetWidth * currentIndex;
+        }
+    }, [currentIndex]);
+
+    useEffect(() => {
+        maxScrollWidth.current = carousel.current
+            ? carousel.current.scrollWidth - carousel.current.offsetWidth
+            : 0;
+    }, []);
+
+    return (
+        <div className="carousel my-12 mx-auto">
+            <h2 className="text-4xl leading-8 font-semibold mb-12 text-white ml-12">
+                {sectionTitle}
+            </h2>
+            <div className="relative overflow-hidden">
+                <div className="flex justify-between absolute top left w-full h-full">
+                    <button
+                        onClick={movePrev}
+                        className="hover:bg-black text-white w-10 h-full text-center opacity-75 hover:opacity-70 disabled:opacity-25 disabled:cursor-not-allowed z-10 p-0 m-0 transition-all ease-in-out duration-300"
+                        disabled={isDisabled('prev')}
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-12 w-20 -ml-5"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            strokeWidth={2}
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M15 19l-7-7 7-7"
+                            />
+                        </svg>
+                        <span className="sr-only">Prev</span>
+                    </button>
+                    <button
+                        onClick={moveNext}
+                        className="hover:bg-black text-white w-10 h-full text-center opacity-75 hover:opacity-70 disabled:opacity-25 disabled:cursor-not-allowed z-10 p-0 m-0 transition-all ease-in-out duration-300"
+                        disabled={isDisabled('next')}
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-12 w-20 -ml-5"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            strokeWidth={2}
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M9 5l7 7-7 7"
+                            />
+                        </svg>
+                        <span className="sr-only">Next</span>
+                    </button>
+                </div>
+                <div
+                    ref={carousel}
+                    className="carousel-container w-100 h-100 relative flex ml-12 gap-7 overflow-hidden scroll-smooth snap-x snap-mandatory touch-pan-x z-0"
+                >
+                    {topAnime.map((anime, index) => {
+                        return (
+                            <div
+                                key={index}
+                                className="carousel-item text-center relative w-52 h-96 snap-start"
+                            >
+                                <a
+                                    //href={resource.link}
+                                    className="h-full w-full aspect-square block bg-origin-padding bg-left-top bg-cover bg-no-repeat z-0"
+                                >
+                                    <img
+                                        src={anime.images.webp.large_image_url || ''}
+                                        alt={anime.title}
+                                        className="h-80 w-full"
+                                    />
+                                    <h3 className="text-white py-1 px-2 text-left text-sm">
+                                        {anime.title_english}
+                                    </h3>
+                                    <p className="text-white px-2 text-left text-sm opacity-90">
+                                        {anime.year} | rank: {anime.rank}
+                                    </p>
+                                </a>
+                                <a
+                                    //href={anime.link}
+                                    className="h-full w-full aspect-square block absolute top-0 left-0 transition-opacity duration-300 opacity-0 hover:opacity-90 bg-gray-900 z-10"
+                                >
+                                    <h3 className="text-white py-6 px-3 mx-auto text-l">
+                                        {anime.title_english}
+                                    </h3>
+                                    <p className="text-white py-1 px-3 mx-auto text-sm">
+                                        Rating: {anime.score}
+                                    </p>
+                                    <p className="text-white py-1 px-3 mx-auto text-sm opacity-70">
+                                        {anime.episodes} episodes
+                                    </p>
+                                    <p className="text-white py-4 px-4 text-left text-sm">
+                                        {anime.synopsis}
+                                    </p>
+                                </a>
+                            </div>
+                        );
+                    })}
                 </div>
             </div>
-        </div >
+        </div>
     );
 }
 

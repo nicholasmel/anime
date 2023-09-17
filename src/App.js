@@ -8,10 +8,10 @@ import TopAnime from './components/TopAnime';
 
 function App() {
   return (
-    <div className="App bg-slate-900">
+    <div className="App bg-black">
       <HeroSection />
-      <Header title='Top Animes' />
-      <TopAnime />
+      <TopAnime byFilter={'airing'} sectionTitle={"Watch Now!"} />
+      <TopAnime byFilter={'bypopularity'} sectionTitle={"Most Popular!"} />
       <PageSection title={'惡鬼滅殺'} quote={"Set your heart ablaze."} />
       <Header title='Search Anime' />
       <Anime />
