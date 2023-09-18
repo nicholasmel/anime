@@ -11,7 +11,7 @@ export default function Features({ title, japanese, synopsis, image, rank, year,
     ]
 
     return (
-        <div className="mx-4 bg-neutral-900 bg-opacity-80  sm:rounded-lg w-80">
+        <div className="mb-10 bg-neutral-900 bg-opacity-80  sm:rounded-lg w-80">
             <div className="max-w-2xl grid items-center gap-y-4 gap-x-1">
                 <div className="grid grid-cols-1 grid-rows-1">
                     <img
