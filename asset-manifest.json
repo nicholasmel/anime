@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/anime/static/css/main.843c2df8.css",
-    "main.js": "/anime/static/js/main.98356614.js",
+    "main.js": "/anime/static/js/main.38d40e51.js",
     "static/media/onepiece.png": "/anime/static/media/onepiece.602fcd6ee2fc281bdd45.png",
     "static/media/Rengoku.png": "/anime/static/media/Rengoku.c91205f27526ce26f17e.png",
     "index.html": "/anime/index.html",
     "main.843c2df8.css.map": "/anime/static/css/main.843c2df8.css.map",
-    "main.98356614.js.map": "/anime/static/js/main.98356614.js.map"
+    "main.38d40e51.js.map": "/anime/static/js/main.38d40e51.js.map"
   },
   "entrypoints": [
     "static/css/main.843c2df8.css",
-    "static/js/main.98356614.js"
+    "static/js/main.38d40e51.js"
   ]
 }
