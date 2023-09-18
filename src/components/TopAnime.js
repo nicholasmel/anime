@@ -2,21 +2,20 @@ import React, { useState, useEffect, useRef } from 'react';
 
 function TopAnime({ byFilter, sectionTitle }) {
     const [topAnime, SetTopAnime] = useState([]);
+    const carousel = useRef(null);
+    const maxScrollWidth = useRef(0);
+    const [currentIndex, setCurrentIndex] = useState(0);
 
     const GetTopAnime = async () => {
-        const temp = await fetch(`https://api.jikan.moe/v4/top/anime?filter=${byFilter}`)
+        const temp = await fetch(`https://api.jikan.moe/v4/top/anime?filter=${byFilter}&limit=20`)
             .then(res => res.json());
 
-        SetTopAnime(temp.data.slice(0, 20));
+        SetTopAnime(temp.data);
     }
 
     useEffect(() => {
         GetTopAnime();
     }, []);
-
-    const maxScrollWidth = useRef(0);
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const carousel = useRef(null);
 
     const movePrev = () => {
         if (currentIndex > 0) {
@@ -53,6 +52,7 @@ function TopAnime({ byFilter, sectionTitle }) {
         }
     }, [currentIndex]);
 
+    maxScrollWidth.current = 4083;
     useEffect(() => {
         maxScrollWidth.current = carousel.current
             ? carousel.current.scrollWidth - carousel.current.offsetWidth
